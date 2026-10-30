@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Changed - Redirecting to Sushi Clicker</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            sushi: {
+              salmon: '#FF6B6B',
+              rice: '#F7F7F7',
+              nori: '#1A2E26',
+              wasabi: '#70B77E',
+              ginger: '#FF9EAA',
+              accent: '#FF4757',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Smooth SVG circular timer transition */
+    .progress-ring__circle {
+      transition: stroke-dashoffset 1s linear;
+      transform: rotate(-90deg);
+      transform-origin: 50% 50%;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(5deg); }
+    }
+
+    .animate-float {
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse-ring {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.05); opacity: 1; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+
+    .pulse-glow {
+      animation: pulse-ring 3s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-emerald-950 to-slate-900 min-h-screen font-sans text-slate-100 flex items-center justify-center p-4 relative overflow-hidden">
+
+  <!-- Decorative background elements -->
+  <div class="absolute -top-32 -left-32 w-96 h-96 bg-sushi-salmon/20 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-sushi-wasabi/20 rounded-full blur-3xl pointer-events-none"></div>
+
+  <!-- Subtle Floating Sushi Icons in Background -->
+  <div class="absolute top-12 left-10 text-4xl opacity-15 animate-float pointer-events-none">🍣</div>
+  <div class="absolute bottom-16 left-1/4 text-3xl opacity-15 animate-float pointer-events-none" style="animation-delay: 1.5s;">🍱</div>
+  <div class="absolute top-1/4 right-12 text-4xl opacity-15 animate-float pointer-events-none" style="animation-delay: 0.8s;">🍙</div>
+  <div class="absolute bottom-12 right-1/4 text-3xl opacity-15 animate-float pointer-events-none" style="animation-delay: 2.2s;">🥢</div>
+
+  <!-- Main Container Card -->
+  <main class="w-full max-w-lg bg-slate-900/80 backdrop-blur-xl border border-slate-700/60 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-black/50 relative z-10 text-center flex flex-col items-center">
+    
+    <!-- Top Floating Badge -->
+    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sushi-salmon/10 border border-sushi-salmon/30 text-sushi-salmon text-xs font-semibold uppercase tracking-wider mb-6">
+      <span class="w-2 h-2 rounded-full bg-sushi-salmon animate-ping"></span>
+      URL Change Notice
+    </div>
+
+    <!-- Animated Emoji Header -->
+    <div class="relative mb-4">
+      <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-sushi-salmon to-amber-400 p-0.5 shadow-lg shadow-sushi-salmon/30 pulse-glow">
+        <div class="w-full h-full bg-slate-900 rounded-[14px] flex items-center justify-center text-4xl">
+          🍣
+        </div>
+      </div>
+    </div>
+
+    <!-- Heading -->
+    <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white mb-2">
+      We've Moved!
+    </h1>
+    
+    <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-md mb-6">
+      Sorry, the URL of this website changed to:
+      <a href="https://sushiclicker.partybag.com" class="block font-bold text-sushi-salmon hover:underline text-lg sm:text-xl mt-1 break-all">
+        sushiclicker.partybag.com
+      </a>
+    </p>
+
+    <!-- Current URL Context Tag -->
+    <div class="w-full bg-slate-800/80 border border-slate-700/70 rounded-xl px-4 py-2.5 mb-8 flex items-center justify-between text-xs sm:text-sm text-slate-400">
+      <span class="flex items-center gap-2 truncate">
+        <i class="fa-solid fa-link text-slate-500"></i>
+        <span>Current URL:</span>
+        <code class="text-slate-300 font-mono text-xs truncate">superclicker.partybag.com</code>
+      </span>
+      <span class="px-2 py-0.5 rounded bg-slate-700/50 text-slate-400 text-[10px] uppercase font-mono">Old Host</span>
+    </div>
+
+    <!-- Countdown Radial Timer Box -->
+    <div class="relative w-36 h-36 flex items-center justify-center mb-6">
+      <svg class="w-full h-full" viewBox="0 0 120 120">
+        <!-- Track Circle -->
+        <circle
+          cx="60"
+          cy="60"
+          r="52"
+          stroke="currentColor"
+          stroke-width="8"
+          class="text-slate-800"
+          fill="transparent"
+        />
+        <!-- Progress Circle -->
+        <circle
+          id="progress-circle"
+          cx="60"
+          cy="60"
+          r="52"
+          stroke="currentColor"
+          stroke-width="8"
+          stroke-linecap="round"
+          class="text-sushi-salmon progress-ring__circle"
+          fill="transparent"
+          stroke-dasharray="326.72"
+          stroke-dashoffset="0"
+        />
+      </svg>
+      <!-- Counter text inside circle -->
+      <div class="absolute flex flex-col items-center justify-center">
+        <span id="countdown-number" class="text-4xl font-extrabold text-white tracking-tighter">10</span>
+        <span class="text-[11px] font-medium text-slate-400 uppercase tracking-widest mt-0.5">Seconds</span>
+      </div>
+    </div>
+
+    <p id="status-text" class="text-xs sm:text-sm text-slate-400 mb-6 min-h-[20px]">
+      Redirecting in <span id="countdown-text" class="font-semibold text-slate-200">10 seconds</span>...
+    </p>
+
+    <!-- Action Buttons -->
+    <div class="w-full flex flex-col sm:flex-row gap-3">
+      <!-- Direct Manual Link -->
+      <a 
+        id="redirect-btn"
+        href="https://sushiclicker.partybag.com" 
+        class="flex-1 py-3 px-5 rounded-xl bg-gradient-to-r from-sushi-salmon to-rose-600 hover:from-rose-500 hover:to-sushi-salmon text-white font-semibold text-sm shadow-lg shadow-sushi-salmon/25 hover:shadow-sushi-salmon/40 transition-all duration-200 flex items-center justify-center gap-2 group"
+      >
+        <span>Redirect Now</span>
+        <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+      </a>
+
+      <!-- Cancel/Pause Button -->
+      <button 
+        id="cancel-btn"
+        onclick="toggleRedirect()"
+        class="py-3 px-4 rounded-xl bg-slate-800 hover:bg-slate-700/80 border border-slate-700 text-slate-300 font-medium text-sm transition-colors duration-200 flex items-center justify-center gap-2"
+      >
+        <i id="cancel-icon" class="fa-solid fa-pause text-xs"></i>
+        <span id="cancel-text">Pause</span>
+      </button>
+    </div>
+
+    <!-- Explicit Fallback Link -->
+    <div class="mt-6 text-xs text-slate-500">
+      Click 
+      <a href="https://sushiclicker.partybag.com" class="text-slate-400 hover:text-sushi-salmon underline transition-colors">
+        here
+      </a> 
+      if you are not redirected automatically.
+    </div>
+  </main>
+
+  <script>
+    const DESTINATION_URL = "https://sushiclicker.partybag.com";
+    const TOTAL_SECONDS = 10;
+    
+    let timeLeft = TOTAL_SECONDS;
+    let isPaused = false;
+    let timerInterval = null;
+
+    const numberDisplay = document.getElementById('countdown-number');
+    const textDisplay = document.getElementById('countdown-text');
+    const statusText = document.getElementById('status-text');
+    const circle = document.getElementById('progress-circle');
+    const cancelBtn = document.getElementById('cancel-btn');
+    const cancelText = document.getElementById('cancel-text');
+    const cancelIcon = document.getElementById('cancel-icon');
+
+    // Circle Circumference calculation: 2 * PI * r = 2 * PI * 52 ≈ 326.72
+    const circumference = 2 * Math.PI * 52;
+    circle.style.strokeDasharray = `${circumference} ${circumference}`;
+
+    function updateProgress(secondsLeft) {
+      const offset = circumference - (secondsLeft / TOTAL_SECONDS) * circumference;
+      circle.style.strokeDashoffset = offset;
+      numberDisplay.textContent = Math.max(0, Math.ceil(secondsLeft));
+      textDisplay.textContent = `${Math.max(0, Math.ceil(secondsLeft))} second${Math.ceil(secondsLeft) === 1 ? '' : 's'}`;
+    }
+
+    function startTimer() {
+      if (timerInterval) clearInterval(timerInterval);
+      
+      timerInterval = setInterval(() => {
+        if (!isPaused) {
+          timeLeft -= 1;
+          updateProgress(timeLeft);
+
+          if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            statusText.innerHTML = '<span class="text-sushi-wasabi font-medium">Redirecting now...</span>';
+            // Perform automatic redirect
+            window.location.href = DESTINATION_URL;
+          }
+        }
+      }, 1000);
+    }
+
+    function toggleRedirect() {
+      isPaused = !isPaused;
+      if (isPaused) {
+        cancelText.textContent = "Resume";
+        cancelIcon.className = "fa-solid fa-play text-xs";
+        statusText.innerHTML = '<span class="text-amber-400 font-medium">Redirect paused.</span>';
+        cancelBtn.classList.add('border-amber-500/40', 'text-amber-300');
+      } else {
+        cancelText.textContent = "Pause";
+        cancelIcon.className = "fa-solid fa-pause text-xs";
+        statusText.innerHTML = `Redirecting in <span class="font-semibold text-slate-200">${Math.ceil(timeLeft)} seconds</span>...`;
+        cancelBtn.classList.remove('border-amber-500/40', 'text-amber-300');
+      }
+    }
+
+    // Initialize display on load
+    window.onload = function() {
+      updateProgress(TOTAL_SECONDS);
+      startTimer();
+    };
+  </script>
+</body>
+</html>
